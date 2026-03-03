@@ -5,35 +5,44 @@
 ## 🏗️ Stack
 
 | Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 14+ (App Router) |
+|-------|------------|
+| Framework | React 18+ (SPA) |
+| Build Tool | Vite |
 | Language | TypeScript (strict mode) |
-| Styling | Tailwind CSS + Design Tokens |
-| Testing | Jest + Playwright |
+| Components | React Spectrum (Adobe) |
+| Routing | React Router v6 |
+| Testing | Vitest + Playwright |
 | CI/CD | GitHub Actions |
-| Hosting | TBD (Railway candidate) |
+| Hosting | GitHub Pages (static) |
 | Domain | negative1.ai |
 
 ## 📁 Structure
 
 ```
 negative-1-website/
+├── .github/workflows/       # CI/CD pipeline
+├── public/                   # Static assets
 ├── src/
-│   ├── app/              # Next.js App Router pages
-│   │   ├── (marketing)/  # Public site — homepage, about, work
-│   │   ├── (dashboard)/  # Mission Control — agent activity, metrics
-│   │   └── api/          # API routes — agents, activity, health
-│   ├── components/       # Shared UI components
-│   │   ├── ui/           # Primitives — Button, Card, Input
-│   │   └── layout/       # Layout — Header, Footer, Nav
-│   ├── lib/              # Utilities, API clients, helpers
-│   ├── hooks/            # Custom React hooks
-│   └── styles/           # Global styles, design tokens
-├── public/               # Static assets
-├── tests/                # Test suites
-├── .github/workflows/    # CI/CD pipeline
-├── tailwind.config.ts
-├── next.config.ts
+│   ├── main.tsx             # App entry point
+│   ├── App.tsx              # Root component + Router
+│   ├── pages/               # Route-level components
+│   │   ├── HomePage.tsx
+│   │   ├── AboutPage.tsx
+│   │   ├── WorkPage.tsx
+│   │   ├── DashboardPage.tsx
+│   │   └── NotFoundPage.tsx
+│   ├── components/
+│   │   ├── layout/          # AppShell, Navigation, Footer
+│   │   ├── website/         # Hero, AgentShowcase, CaseStudyCard
+│   │   ├── dashboard/       # AgentStatusGrid, ActivityFeed
+│   │   └── shared/          # Logo, StatusBadge
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utilities, types, constants
+│   ├── theme/               # Spectrum theme overrides + design tokens
+│   └── data/                # Static JSON data (MVP)
+├── tests/
+├── index.html               # Vite entry
+├── vite.config.ts
 ├── tsconfig.json
 └── package.json
 ```
@@ -41,8 +50,8 @@ negative-1-website/
 ## 🔀 Branching Strategy
 
 | Branch | Purpose | Protection |
-|--------|---------|-----------|
-| `main` | Production | PR + Rex approval required |
+|--------|---------|------------|
+| `main` | Production (deploys to GitHub Pages) | PR + Rex approval required |
 | `staging` | Preview/QA | PR required |
 | `feature/*` | New features | Unprotected |
 | `fix/*` | Bug fixes | Unprotected |
@@ -53,19 +62,29 @@ negative-1-website/
 | Role | Agent | Focus |
 |------|-------|-------|
 | Tech Lead / Deployment Owner | **Rex** | Architecture, CI/CD, code review, merges |
-| Frontend FDE | **Kai** | Components, pages, design system, accessibility |
-| Backend FDE | **Jules** | API routes, data layer, integrations |
+| Frontend FDE | **Kai** | Pages, components, React Spectrum, accessibility |
+| Backend FDE | **Jules** | Data schemas, future API proxy (Railway) |
 | Adobe Platform FDE | **Nova** | Firefly/Photoshop API specs, auth flows |
 
 ## 🚀 Getting Started
 
 ```bash
 pnpm install
-pnpm dev        # Start dev server at localhost:3000
-pnpm build      # Production build
-pnpm test       # Run test suite
-pnpm lint       # Lint + typecheck
+pnpm dev          # Start dev server at localhost:5173
+pnpm build        # Production build → dist/
+pnpm preview      # Preview production build locally
+pnpm test         # Run test suite
+pnpm lint         # Lint + typecheck
 ```
+
+## Architecture Decisions
+
+- **React SPA over Next.js**: No server needed for MVP. Static hosting is simpler, cheaper, and faster to deploy.
+- **React Spectrum**: Adobe's design system — accessible by default, built-in theming, aligns with our Adobe platform work.
+- **Vite over webpack/CRA**: Native ESM, faster HMR, simpler config.
+- **GitHub Pages**: Free, zero-config, custom domain support. No server to manage.
+- **No database (MVP)**: Static JSON files in `src/data/`. Real APIs come in Phase 2.
+- **Railway (future)**: Only if Adobe API proxy needs server-side secrets.
 
 ## 📄 License
 
