@@ -1,0 +1,76 @@
+/* Negative One Agency — Global Styles */
+/* Design tokens from Sable's style guide */
+
+:root {
+  /* Dark palette (default) */
+  --color-void: #0A0A0B;
+  --color-surface: #141419;
+  --color-elevated: #1E1E26;
+  --color-border: #2A2A36;
+  --color-muted: #6B7280;
+  --color-secondary: #A1A1AA;
+  --color-primary: #F5F5F7;
+
+  /* Accent */
+  --color-pulse: #6366F1;
+  --color-pulse-hover: #818CF8;
+  --color-pulse-muted: rgba(99, 102, 241, 0.2);
+
+  /* Status */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing base: 4px */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-primary);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--color-pulse-muted);
+  color: var(--color-primary);
+}
+
+a {
+  color: var(--color-pulse);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-pulse-hover);
+}
