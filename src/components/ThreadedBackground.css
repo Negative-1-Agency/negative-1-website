@@ -1,0 +1,54 @@
+@property --hue {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --r {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.threaded-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: black;
+  overflow: hidden;
+}
+
+.threaded-background svg {
+  width: 100%;
+  height: 100%;
+  animation: around 10s linear infinite;
+}
+
+.threaded-background path {
+  fill: none;
+  --h: calc(var(--hue) * 0.1 - var(--r));
+  --s: calc(var(--hue) - var(--r));
+  --l: calc(100 - sin(var(--h)) * 10);
+  stroke: hsl(var(--h) 100 var(--l));
+  stroke-width: 12;
+  opacity: 0.09;
+}
+
+/* OKLCH mode - can be toggled via class */
+.threaded-background.oklch-mode path {
+  --l: calc(0.3 + sin(var(--h)) * 0.3);
+  stroke: oklch(var(--l) 0.3 var(--h));
+  opacity: 0.09;
+}
+
+@keyframes around {
+  from {
+    --r: 0turn;
+  }
+  to {
+    --r: 1turn;
+  }
+}
