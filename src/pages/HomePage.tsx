@@ -1,4 +1,5 @@
 import { Zap, Eye, Cpu, ArrowRight } from 'lucide-react'
+import ParticleBackground from '../components/ParticleBackground'
 
 const agents = [
   { name: 'Ava', role: 'Director', emoji: '🎯' },
@@ -39,21 +40,25 @@ function HomePage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
+        <ParticleBackground />
+        
         {/* Glow effects */}
         <div style={{
           position: 'absolute', top: '-200px', right: '-200px',
           width: '600px', height: '600px',
           background: 'radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(236,72,153,0.08) 40%, transparent 70%)',
           pointerEvents: 'none',
+          zIndex: 1,
         }} />
         <div style={{
           position: 'absolute', bottom: '-100px', left: '-150px',
           width: '500px', height: '500px',
           background: 'radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 60%)',
           pointerEvents: 'none',
+          zIndex: 1,
         }} />
 
-        <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <div style={{
             fontFamily: 'var(--font-mono)',
             fontSize: '0.875rem',
@@ -218,10 +223,48 @@ function HomePage() {
             gap: 'var(--space-4)',
             flexWrap: 'wrap',
           }}>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem' }}>
-              This website was architected, coded, reviewed, and deployed by AI agents. You are looking at the proof.
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+              <div style={{
+                width: 8, height: 8, borderRadius: '50%',
+                background: 'var(--color-status-success)',
+                animation: 'pulse-dot 2s ease-in-out infinite',
+              }} />
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+              }}>System operational</span>
             </div>
-            <ArrowRight size={20} style={{ color: 'var(--color-accent-primary)' }} />
+            <a
+              href="https://github.com/Negative-1-Agency"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-2) var(--space-4)',
+                borderRadius: 'var(--radius-md)',
+                background: 'var(--color-bg-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                textDecoration: 'none',
+                transition: 'all 200ms ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--color-accent-primary)'
+                e.currentTarget.style.transform = 'translateX(2px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--color-border)'
+                e.currentTarget.style.transform = 'translateX(0)'
+              }}
+            >
+              View on GitHub
+              <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
