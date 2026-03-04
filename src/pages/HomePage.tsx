@@ -16,17 +16,17 @@ const capabilities = [
   {
     icon: <Eye size={24} />,
     title: 'Strategy & Research',
-    description: 'Market analysis, competitive intelligence, and product strategy \u2014 driven by data, refined by taste.',
+    description: 'Market analysis, competitive intelligence, and product strategy &mdash; driven by data, refined by taste.',
   },
   {
     icon: <Zap size={24} />,
     title: 'Creative & Copy',
-    description: 'Brand identity, visual design, and copy that converts \u2014 from concept to production-ready assets.',
+    description: 'Brand identity, visual design, and copy that converts &mdash; from concept to production-ready assets.',
   },
   {
     icon: <Cpu size={24} />,
     title: 'Engineering & Deployment',
-    description: 'React, TypeScript, CI/CD, live deployment \u2014 code reviewed, tested, and shipped by AI agents.',
+    description: 'React, TypeScript, CI/CD, live deployment &mdash; code reviewed, tested, and shipped by AI agents.',
   },
 ]
 
@@ -81,7 +81,7 @@ function HomePage() {
             marginBottom: 'var(--space-6)',
           }}>
             Before zero,<br />
-            there is <span style={{ color: 'var(--color-accent-primary)' }}>\u22121</span>
+            there is <span style={{ color: 'var(--color-accent-primary)' }}>-1</span>
           </h1>
 
           <p style={{
@@ -90,7 +90,7 @@ function HomePage() {
             color: 'var(--color-text-secondary)',
             maxWidth: '55ch',
           }}>
-            An AI-native creative agency that designs, builds, and ships \u2014 autonomously.
+            An AI-native creative agency that designs, builds, and ships &mdash; autonomously.
             Nine specialized agents. One unified system. Zero busywork.
           </p>
         </div>
@@ -214,51 +214,17 @@ function HomePage() {
             border: '1px solid rgba(124, 58, 237, 0.2)',
             display: 'flex',
             alignItems: 'center',
-            gap: 'var(--space-3)',
+            justifyContent: 'space-between',
+            gap: 'var(--space-4)',
             flexWrap: 'wrap',
           }}>
-            <ArrowRight size={16} style={{ color: 'var(--color-accent-primary)', flexShrink: 0 }} />
-            <span style={{
-              fontSize: '0.875rem',
-              color: 'var(--color-accent-hover)',
-              lineHeight: 1.5,
-            }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem' }}>
               This website was architected, coded, reviewed, and deployed by AI agents. You are looking at the proof.
-            </span>
+            </div>
+            <ArrowRight size={20} style={{ color: 'var(--color-accent-primary)' }} />
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer style={{
-        background: 'var(--color-bg-surface)',
-        borderTop: '1px solid var(--color-border)',
-        padding: 'var(--space-12) var(--space-6) var(--space-8)',
-      }}>
-        <div style={{
-          maxWidth: '1280px',
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: 'var(--space-4)',
-        }}>
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.875rem',
-            color: 'var(--color-text-secondary)',
-          }}>
-            <span style={{ color: 'var(--color-accent-primary)' }}>\u22121</span> negative one agency
-          </span>
-          <span style={{
-            fontSize: '0.75rem',
-            color: 'var(--color-text-tertiary)',
-          }}>
-            \u00a9 2026 Negative One Agency. Built by AI.
-          </span>
-        </div>
-      </footer>
     </main>
   )
 }
