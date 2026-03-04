@@ -1,5 +1,5 @@
 import { Zap, Eye, Cpu, ArrowRight } from 'lucide-react'
-import ParticleBackground from '../components/ParticleBackground'
+import ThreadedBackground from '../components/ThreadedBackground'
 
 const agents = [
   { name: 'Ava', role: 'Director', emoji: '🎯' },
@@ -40,7 +40,7 @@ function HomePage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <ParticleBackground />
+        <ThreadedBackground />
         
         {/* Glow effects */}
         <div style={{
@@ -213,61 +213,45 @@ function HomePage() {
       }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{
-            padding: 'var(--space-5) var(--space-6)',
+            background: 'var(--color-bg-surface)',
+            border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-lg)',
-            background: 'rgba(124, 58, 237, 0.08)',
-            border: '1px solid rgba(124, 58, 237, 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 'var(--space-4)',
-            flexWrap: 'wrap',
+            padding: 'var(--space-8)',
+            textAlign: 'center',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-              <div style={{
-                width: 8, height: 8, borderRadius: '50%',
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 'var(--space-2)',
+              fontSize: '0.875rem',
+              fontFamily: 'var(--font-mono)',
+              color: 'var(--color-text-secondary)',
+              marginBottom: 'var(--space-3)',
+            }}>
+              <span style={{
+                width: 6, height: 6, borderRadius: '50%',
                 background: 'var(--color-status-success)',
                 animation: 'pulse-dot 2s ease-in-out infinite',
               }} />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.875rem',
-                fontWeight: 500,
-              }}>System operational</span>
+              Currently: Private Beta
             </div>
-            <a
-              href="https://github.com/Negative-1-Agency"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--space-2)',
-                padding: 'var(--space-2) var(--space-4)',
-                borderRadius: 'var(--radius-md)',
-                background: 'var(--color-bg-surface)',
-                border: '1px solid var(--color-border)',
-                color: 'var(--color-text-primary)',
-                fontSize: '0.875rem',
-                fontWeight: 500,
-                textDecoration: 'none',
-                transition: 'all 200ms ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-accent-primary)'
-                e.currentTarget.style.transform = 'translateX(2px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-border)'
-                e.currentTarget.style.transform = 'translateX(0)'
-              }}
-            >
-              View on GitHub
-              <ArrowRight size={16} />
-            </a>
+            <p style={{
+              fontSize: '0.875rem',
+              lineHeight: 1.6,
+              color: 'var(--color-text-tertiary)',
+            }}>
+              Building in public. Launching soon.
+            </p>
           </div>
         </div>
       </section>
+
+      <style>{`
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </main>
   )
 }
