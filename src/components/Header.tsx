@@ -49,10 +49,10 @@ function Header() {
           fontFamily: 'var(--font-mono)',
           fontWeight: 500,
           fontSize: '1rem',
-          color: 'var(--color-text-primary)',
+          color: 'var(--color-accent-primary)',
           letterSpacing: '-0.02em',
         }}>
-          <span style={{ color: 'var(--color-accent-primary)' }}>−1</span> negative one
+          −1
         </span>
 
         <span style={{
