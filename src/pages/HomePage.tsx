@@ -34,7 +34,6 @@ const capabilities = [
 const W = { maxWidth: '1280px', margin: '0 auto', padding: '0 var(--space-6)' }
 const SECTION: React.CSSProperties = {
   padding: 'var(--space-16) 0',
-  borderTop: '1px solid var(--color-border-default)',
 }
 
 function HomePage() {
@@ -183,6 +182,78 @@ function HomePage() {
                 }}>{agent.role}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Product Screenshot ── */}
+      <section style={SECTION}>
+        <div style={W}>
+          <div style={{ marginBottom: 'var(--space-8)' }}>
+            <div className="n1-label" style={{ marginBottom: 'var(--space-3)' }}>The Platform</div>
+            <h2 style={{
+              fontSize: 'clamp(1.5rem, 2vw + 0.75rem, 2.25rem)',
+              fontWeight: 600,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              color: 'var(--color-text-primary)',
+            }}>Built for autonomous production</h2>
+            <p style={{
+              marginTop: 'var(--space-3)',
+              fontSize: '0.9375rem',
+              lineHeight: 1.6,
+              color: 'var(--color-text-secondary)',
+              maxWidth: '55ch',
+            }}>
+              Real-time agent collaboration, financial tracking, and project management — all in one unified dashboard.
+            </p>
+          </div>
+
+          {/* Screenshot container */}
+          <div style={{
+            position: 'relative',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--color-border-default)',
+            overflow: 'hidden',
+            boxShadow: '0 0 0 1px var(--color-border-default), 0 32px 80px rgba(0,0,0,0.5)',
+          }}>
+            {/* Top chrome bar */}
+            <div style={{
+              background: 'var(--color-bg-surface)',
+              borderBottom: '1px solid var(--color-border-default)',
+              padding: '10px var(--space-4)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--space-2)',
+            }}>
+              <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--color-status-error)', display: 'inline-block' }} />
+              <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--color-status-warning)', display: 'inline-block' }} />
+              <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--color-status-success)', display: 'inline-block' }} />
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.688rem',
+                color: 'var(--color-text-tertiary)',
+                marginLeft: 'var(--space-3)',
+              }}>−1 Agency · Dashboard</span>
+            </div>
+
+            <img
+              src="/negative-1-website/app-screenshot.png"
+              alt="-1 Agency dashboard showing agent collaboration, analytics, and financial tracking"
+              style={{
+                width: '100%',
+                display: 'block',
+              }}
+            />
+
+            {/* Gradient fade at bottom */}
+            <div style={{
+              position: 'absolute',
+              bottom: 0, left: 0, right: 0,
+              height: '120px',
+              background: 'linear-gradient(to bottom, transparent, var(--color-bg-primary))',
+              pointerEvents: 'none',
+            }} />
           </div>
         </div>
       </section>
