@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import './ThreadedBackground.css'
 
 interface ThreadedBackgroundProps {
   className?: string
@@ -13,9 +14,8 @@ export function ThreadedBackground({ className = '' }: ThreadedBackgroundProps) 
     const svg = svgRef.current
     if (!svg) return
 
-    // Build paths exactly as per the original algorithm
-    const width = 360
-    const height = 0.01
+    const width = 80
+    const height = 1
     const threads: Array<{ d: string; hue: number }> = []
 
     for (let o = -360; o <= 360; o++) {
@@ -23,39 +23,41 @@ export function ThreadedBackground({ className = '' }: ThreadedBackgroundProps) 
 
       if (!o) {
         let s = -width
+        let h = 1.5
         do {
           d.push(
-            s + width * 0.2, -height,
-            s + width * 0.3, -height,
+            s + width * 0.2, -height - h,
+            s + width * 0.3, -height - h,
             s + width * 0.5, 0,
-            s + width * 0.7,  height,
-            s + width * 0.9,  height,
+            s + width * 0.7,  height + h,
+            s + width * 0.8,  height + h,
             s + width, 0
           )
           s += width
+          h++
         } while (s < 500)
       } else {
         const r = (Math.hypot(o, 500) * 500) / o
         const s = width / r
-        let a = -s * (o / 36000 + 1)
-        let h = -36
+        let a = -s * (o / 360 + 1)
+        let h = 1
 
         d[1] = parseFloat((Math.sin(a) * r).toFixed(3))
         d[2] = parseFloat((r - Math.cos(a) * r).toFixed(3))
 
         do {
-          const segments: [number, number][] = [
-            [r + height + h, s * 0.1],
+          const c: [number, number][] = [
+            [r + height + h, s * 0.2],
             [r + height + h, s * 0.3],
             [r,              s * 0.5],
             [r - height - h, s * 0.7],
-            [r - height - h, s * 0.9],
+            [r - height - h, s * 0.8],
             [r,              s],
           ]
-          for (const [rr, aa] of segments) {
+          for (const [rr, aa] of c) {
             d.push(
-              parseFloat((Math.sin(aa + a) * rr).toFixed(1)),
-              parseFloat((r - Math.cos(aa + a) * rr).toFixed(2))
+              parseFloat((Math.sin(aa + a) * rr).toFixed(3)),
+              parseFloat((r - Math.cos(aa + a) * rr).toFixed(3))
             )
           }
           a += s
@@ -63,36 +65,34 @@ export function ThreadedBackground({ className = '' }: ThreadedBackgroundProps) 
         } while (Math.sin(a) * r < 500)
       }
 
-      threads.push({ d: d.join(' '), hue: o / 3 })
+      // hue: o / 2 + 150  (matches original threads.push([..., o / 2 + 150]))
+      threads.push({ d: d.join(' '), hue: o / 2 + 150 })
     }
 
-    // Create SVG path elements
+    // Create path elements
     const pathEls: SVGPathElement[] = threads.map(({ d }) => {
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('d', d)
       path.setAttribute('fill', 'none')
-      path.setAttribute('stroke-width', '12')
-      path.setAttribute('opacity', '0.09')
+      path.setAttribute('stroke-width', '2')
+      path.setAttribute('opacity', '0.07')
       svg.appendChild(path)
       return path
     })
 
-    // Animate: rotate hue over time (equivalent to --r: 0turn → 1turn over 10s)
-    const DURATION = 10000 // 10s loop
+    // Animate hue rotation — --r: 0turn → 1turn over 10s
+    const DURATION = 10000
 
     function frame(ts: number) {
       if (!startRef.current) startRef.current = ts
-      const elapsed = ts - startRef.current
-      const r = (elapsed % DURATION) / DURATION // 0..1 fraction of full rotation
+      const r = ((ts - startRef.current) % DURATION) / DURATION
+      const rDeg = r * 360
 
       pathEls.forEach((path, i) => {
-        const hue = threads[i].hue
-        // Replicate: --h: calc(var(--hue) * 0.1 - var(--r))
-        // --r in original is 0turn to 1turn = 0deg to 360deg
-        const rDeg = r * 360
-        const h = hue * 0.1 - rDeg
-        // --l: calc(100 - sin(var(--h)) * 10)
-        const l = 100 - Math.sin((h * Math.PI) / 180) * 10
+        // --h: calc(var(--hue) - var(--r))
+        const h = threads[i].hue - rDeg
+        // --l: calc(60 + sin(var(--h)) * 10)
+        const l = 60 + Math.sin((h * Math.PI) / 180) * 10
         path.setAttribute('stroke', `hsl(${h} 100% ${l}%)`)
       })
 
@@ -118,14 +118,13 @@ export function ThreadedBackground({ className = '' }: ThreadedBackgroundProps) 
         zIndex: 0,
         overflow: 'hidden',
         pointerEvents: 'none',
-        background: 'transparent',
       }}
     >
       <svg
         ref={svgRef}
         viewBox="0 -200 500 400"
         preserveAspectRatio="xMinYMid slice"
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '100%', display: 'block' }}
       />
     </div>
   )
