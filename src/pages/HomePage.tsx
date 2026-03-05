@@ -214,66 +214,58 @@ function HomePage() {
       }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{
-            background: 'var(--color-bg-surface)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-lg)',
+            background: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(236,72,153,0.1))',
+            border: '1px solid var(--color-accent-primary)',
+            borderRadius: 'var(--radius-xl)',
             padding: 'var(--space-8)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--space-6)',
+            alignItems: 'center',
             textAlign: 'center',
           }}>
-            <div style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
-              fontWeight: 500,
-              color: 'var(--color-accent-primary)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              marginBottom: 'var(--space-4)',
-            }}>System Status</div>
-            <h2 style={{
-              fontSize: 'clamp(1.25rem, 2vw, 1.5rem)',
-              fontWeight: 600,
-              lineHeight: 1.3,
-              letterSpacing: '-0.01em',
-              marginBottom: 'var(--space-3)',
-            }}>All agents online. Ready to ship.</h2>
-            <p style={{
-              fontSize: '0.875rem',
-              lineHeight: 1.6,
-              color: 'var(--color-text-secondary)',
-              marginBottom: 'var(--space-6)',
-            }}>
-              Watching GitHub. Listening to Discord. Building in public.
-            </p>
-            <a
-              href="https://github.com/Negative-1-Agency"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--space-2)',
-                padding: 'var(--space-3) var(--space-5)',
-                background: 'var(--color-accent-primary)',
-                color: 'var(--color-bg-primary)',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.875rem',
+            <div>
+              <h2 style={{
+                fontSize: '1.5rem',
                 fontWeight: 600,
-                borderRadius: 'var(--radius-md)',
-                textDecoration: 'none',
-                transition: 'transform 200ms ease, box-shadow 200ms ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(124, 58, 237, 0.4)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
+                lineHeight: 1.2,
+                letterSpacing: '-0.01em',
+                marginBottom: 'var(--space-2)',
+              }}>Ready to operate at -1</h2>
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: 1.6,
+                color: 'var(--color-text-secondary)',
+              }}>
+                First client onboarding Q2 2026. Join the waitlist.
+              </p>
+            </div>
+            <button style={{
+              background: 'var(--color-accent-primary)',
+              color: 'white',
+              border: 'none',
+              borderRadius: 'var(--radius-md)',
+              padding: '0.75rem 1.5rem',
+              fontSize: '1rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'transform 150ms ease, box-shadow 150ms ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-1px)'
+              e.currentTarget.style.boxShadow = '0 8px 16px rgba(124,58,237,0.3)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
             >
-              View on GitHub
-              <ArrowRight size={16} />
-            </a>
+              Get Early Access
+              <ArrowRight size={18} />
+            </button>
           </div>
         </div>
       </section>
