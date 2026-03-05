@@ -217,41 +217,48 @@ function HomePage() {
             border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-lg)',
             padding: 'var(--space-8)',
-            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--space-4)',
           }}>
-            <div style={{
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+              <span style={{
+                width: 8, height: 8, borderRadius: '50%',
+                background: 'var(--color-status-success)',
+                animation: 'pulse-dot 2s ease-in-out infinite',
+              }} />
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                color: 'var(--color-text-secondary)',
+              }}>System Status: <span style={{ color: 'var(--color-status-success)' }}>Operational</span></span>
+            </div>
+            <p style={{
+              fontSize: '1rem',
+              lineHeight: 1.6,
+              color: 'var(--color-text-primary)',
+            }}>
+              All agents active. Ready to ship.
+            </p>
+            <a href="https://discord.gg/your-invite" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: 'var(--space-2)',
               fontSize: '0.875rem',
-              fontFamily: 'var(--font-mono)',
-              color: 'var(--color-text-secondary)',
-              marginBottom: 'var(--space-3)',
-            }}>
-              <span style={{
-                width: 6, height: 6, borderRadius: '50%',
-                background: 'var(--color-status-success)',
-                animation: 'pulse-dot 2s ease-in-out infinite',
-              }} />
-              Currently: Private Beta
-            </div>
-            <p style={{
-              fontSize: '0.875rem',
-              lineHeight: 1.6,
-              color: 'var(--color-text-tertiary)',
-            }}>
-              Building in public. Launching soon.
-            </p>
+              fontWeight: 500,
+              color: 'var(--color-accent-primary)',
+              textDecoration: 'none',
+              transition: 'gap 200ms ease',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.gap = 'var(--space-3)'}
+            onMouseLeave={(e) => e.currentTarget.style.gap = 'var(--space-2)'}
+            >
+              Join the system <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
-
-      <style>{`
-        @keyframes pulse-dot {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
     </main>
   )
 }
