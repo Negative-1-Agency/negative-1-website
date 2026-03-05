@@ -1,26 +1,29 @@
-.threaded-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
-  background: transparent;
-  overflow: hidden;
-  pointer-events: none;
+@property --hue {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --r {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
 }
 
 .threaded-background svg {
-  width: 100%;
-  height: 100%;
   animation: around 10s linear infinite;
 }
 
+.threaded-background svg path {
+  fill: none;
+  --h: calc(var(--hue) * 0.1 - var(--r));
+  --l: calc(100 - sin(var(--h)) * 10);
+  stroke: hsl(var(--h) 100% var(--l));
+  stroke-width: 12;
+  opacity: 0.09;
+}
+
 @keyframes around {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { --r: 0turn; }
+  to   { --r: 1turn; }
 }
