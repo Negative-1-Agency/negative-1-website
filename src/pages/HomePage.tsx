@@ -234,7 +234,7 @@ function HomePage() {
                 fontSize: '0.688rem',
                 color: 'var(--color-text-tertiary)',
                 marginLeft: 'var(--space-3)',
-              }}>−1 Agency · Dashboard</span>
+              }}>−1 Agency</span>
             </div>
 
             <img

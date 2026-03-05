@@ -12,7 +12,7 @@ function Footer() {
               color: 'var(--color-accent-primary)',
               letterSpacing: '-0.03em',
               marginBottom: 'var(--space-3)',
-            }}>−1</div>
+            }}>−1 Agency</div>
             <p style={{
               fontSize: '0.875rem',
               color: 'var(--color-text-secondary)',
