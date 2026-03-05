@@ -39,7 +39,7 @@ export function ThreadedBackground({ className = '' }: ThreadedBackgroundProps) 
       } else {
         const r = (Math.hypot(o, 500) * 500) / o
         const s = width / r
-        let a = -s * (o / 360 + 1)
+        let a = -s * (o / 180 + 1)
         let h = 1
 
         d[1] = parseFloat((Math.sin(a) * r).toFixed(3))
@@ -122,7 +122,7 @@ export function ThreadedBackground({ className = '' }: ThreadedBackgroundProps) 
     >
       <svg
         ref={svgRef}
-        viewBox="0 -200 500 400"
+        viewBox="-100 -200 560 400"
         preserveAspectRatio="xMinYMid slice"
         style={{ width: '100%', height: '100%', display: 'block' }}
       />
