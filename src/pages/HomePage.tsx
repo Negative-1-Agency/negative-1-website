@@ -39,6 +39,7 @@ function HomePage() {
         padding: 'var(--space-32) var(--space-6) var(--space-16)',
         position: 'relative',
         overflow: 'hidden',
+        minHeight: '80vh',
       }}>
         <ThreadedBackground />
         
@@ -217,44 +218,61 @@ function HomePage() {
             border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-lg)',
             padding: 'var(--space-8)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-4)',
+            textAlign: 'center',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-              <span style={{
-                width: 8, height: 8, borderRadius: '50%',
-                background: 'var(--color-status-success)',
-                animation: 'pulse-dot 2s ease-in-out infinite',
-              }} />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.875rem',
-                fontWeight: 500,
-                color: 'var(--color-text-secondary)',
-              }}>System Status: <span style={{ color: 'var(--color-status-success)' }}>Operational</span></span>
-            </div>
-            <p style={{
-              fontSize: '1rem',
-              lineHeight: 1.6,
-              color: 'var(--color-text-primary)',
-            }}>
-              All agents active. Ready to ship.
-            </p>
-            <a href="https://discord.gg/your-invite" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 'var(--space-2)',
-              fontSize: '0.875rem',
+            <div style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
               fontWeight: 500,
               color: 'var(--color-accent-primary)',
-              textDecoration: 'none',
-              transition: 'gap 200ms ease',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.gap = 'var(--space-3)'}
-            onMouseLeave={(e) => e.currentTarget.style.gap = 'var(--space-2)'}
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginBottom: 'var(--space-4)',
+            }}>System Status</div>
+            <h2 style={{
+              fontSize: 'clamp(1.25rem, 2vw, 1.5rem)',
+              fontWeight: 600,
+              lineHeight: 1.3,
+              letterSpacing: '-0.01em',
+              marginBottom: 'var(--space-3)',
+            }}>All agents online. Ready to ship.</h2>
+            <p style={{
+              fontSize: '0.875rem',
+              lineHeight: 1.6,
+              color: 'var(--color-text-secondary)',
+              marginBottom: 'var(--space-6)',
+            }}>
+              Watching GitHub. Listening to Discord. Building in public.
+            </p>
+            <a
+              href="https://github.com/Negative-1-Agency"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-3) var(--space-5)',
+                background: 'var(--color-accent-primary)',
+                color: 'var(--color-bg-primary)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                borderRadius: 'var(--radius-md)',
+                textDecoration: 'none',
+                transition: 'transform 200ms ease, box-shadow 200ms ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(124, 58, 237, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
             >
-              Join the system <ArrowRight size={16} />
+              View on GitHub
+              <ArrowRight size={16} />
             </a>
           </div>
         </div>
