@@ -28,6 +28,22 @@ const GoogleIcon = () => (
   </svg>
 )
 
+const AdobeIcon = () => (
+  <svg viewBox="0 0 24 24" width="12" height="12" fill="#FA0F00">
+    <path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm6.23 0H24v21.248z"/>
+  </svg>
+)
+
+const FigmaIcon = () => (
+  <svg viewBox="0 0 24 24" width="12" height="12">
+    <path fill="#F24E1E" d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z"/>
+    <path fill="#FF7262" d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z"/>
+    <path fill="#A259FF" d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z"/>
+    <path fill="#1ABCFE" d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4z"/>
+    <path fill="#0ACF83" d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z"/>
+  </svg>
+)
+
 const capabilities = [
   {
     icon: '♥',
@@ -39,11 +55,13 @@ const capabilities = [
       { icon: <GoogleIcon />, label: 'Google Docs' },
       { icon: <GoogleIcon />, label: 'Google Drive' },
       { icon: <GoogleIcon />, label: 'Google Slides' },
+      { icon: <AdobeIcon />, label: 'Adobe Firefly' },
+      { icon: <FigmaIcon />, label: 'Figma' },
       { icon: <Search size={11} />, label: 'Web Research' },
     ],
   },
   {
-    icon: '◈',
+    icon: <Brain size={20} />,
     title: 'Mind',
     subtitle: 'Strategy & Research',
     description: 'Market intelligence, competitive analysis, and product strategy. The thinking that makes creative work land.',
@@ -51,6 +69,7 @@ const capabilities = [
       { icon: <Search size={11} />, label: 'Web Research' },
       { icon: <GoogleIcon />, label: 'Google Docs' },
       { icon: <GoogleIcon />, label: 'Google Sheets' },
+      { icon: <AdobeIcon />, label: 'Adobe Workfront' },
       { icon: <MessageSquare size={11} />, label: 'Agent Collaboration' },
       { icon: <Brain size={11} />, label: 'Memory & Context' },
     ],
@@ -64,7 +83,9 @@ const capabilities = [
       { icon: <Terminal size={11} />, label: 'Terminal & Scripting' },
       { icon: <FolderOpen size={11} />, label: 'File Management' },
       { icon: <Clock size={11} />, label: 'Task Automation' },
-      { icon: <GitHubIcon />, label: 'GitHub & CI/CD' },
+      { icon: <GitHubIcon />, label: 'GitHub' },
+      { icon: <AdobeIcon />, label: 'Adobe Firefly' },
+      { icon: <FigmaIcon />, label: 'Figma' },
       { icon: <MessageSquare size={11} />, label: 'Agent Collaboration' },
     ],
   },
