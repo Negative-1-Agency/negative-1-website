@@ -238,7 +238,7 @@ function HomePage() {
             </div>
 
             <img
-              src="/negative-1-website/app-screenshot.png"
+              src="/app-screenshot.png"
               alt="-1 Agency dashboard showing agent collaboration, analytics, and financial tracking"
               style={{
                 width: '100%',
