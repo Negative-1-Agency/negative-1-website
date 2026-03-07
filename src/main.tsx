@@ -7,7 +7,7 @@ import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/negative-1-website">
+    <BrowserRouter basename="/">
       <Provider theme={defaultTheme} colorScheme="dark">
         <App />
       </Provider>
