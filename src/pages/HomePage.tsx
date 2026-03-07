@@ -173,34 +173,24 @@ function HomePage() {
           </div>
           <div style={{ marginBottom: 'var(--space-1)' }}>
             <h3 style={{
-              fontSize: '1.0625rem',
-              fontWeight: 700,
-              letterSpacing: '-0.01em',
-              color: 'var(--color-text-primary)',
-              display: 'inline',
+              fontSize: '1.0625rem', fontWeight: 700,
+              letterSpacing: '-0.01em', color: 'var(--color-text-primary)', display: 'inline',
             }}>{cap.title}</h3>
             <span style={{
-              fontSize: '0.8125rem',
-              color: 'var(--color-accent-primary)',
-              fontFamily: 'var(--font-mono)',
-              marginLeft: 'var(--space-2)',
+              fontSize: '0.8125rem', color: 'var(--color-accent-primary)',
+              fontFamily: 'var(--font-mono)', marginLeft: 'var(--space-2)',
             }}>{cap.subtitle}</span>
           </div>
           <p style={{
-            fontSize: '0.875rem',
-            lineHeight: 1.6,
+            fontSize: '0.875rem', lineHeight: 1.6,
             color: 'var(--color-text-secondary)',
-            marginTop: 'var(--space-2)',
-            marginBottom: 'var(--space-4)',
+            marginTop: 'var(--space-2)', marginBottom: 'var(--space-4)',
           }}>{cap.description}</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
             {cap.tools.map((tool) => (
               <span key={tool.label} style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '5px',
-                fontSize: '0.6875rem',
-                fontFamily: 'var(--font-mono)',
+                display: 'flex', alignItems: 'center', gap: '5px',
+                fontSize: '0.6875rem', fontFamily: 'var(--font-mono)',
                 color: 'var(--color-text-tertiary)',
                 background: 'rgba(124,58,237,0.07)',
                 border: '1px solid rgba(124,58,237,0.15)',
