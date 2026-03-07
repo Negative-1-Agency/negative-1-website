@@ -1,4 +1,4 @@
-import { Zap, Eye, Cpu, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import ThreadedBackground from '../components/ThreadedBackground'
 
 const agents = [
