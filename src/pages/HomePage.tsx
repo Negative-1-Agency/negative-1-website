@@ -156,8 +156,57 @@ function HomePage() {
           </div>
         </div>
       </section>
-
+      
       {capabilities.map((cap) => (
+      <div style={{ marginBottom: 'var(--space-12)' }}>
+        <div className="n1-label" style={{ marginBottom: 'var(--space-6)' }}>How We Work</div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          position: 'relative',
+        }}>
+          {workflowSteps.map((step, i) => (
+            <div key={step.label} style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              position: 'relative',
+              padding: 'var(--space-4) var(--space-2)',
+            }}>
+              {i < workflowSteps.length - 1 && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'calc(var(--space-4) + 17px)',
+                  right: 0, width: '50%', height: '1px',
+                  background: 'linear-gradient(to right, rgba(124,58,237,0.4), rgba(124,58,237,0.1))',
+                  zIndex: 0,
+                }} />
+              )}
+              {i > 0 && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'calc(var(--space-4) + 17px)',
+                  left: 0, width: '50%', height: '1px',
+                  background: 'linear-gradient(to right, rgba(124,58,237,0.1), rgba(124,58,237,0.4))',
+                  zIndex: 0,
+                }} />
+              )}
+              <div style={{
+                width: 10, height: 10,
+                borderRadius: '50%',
+                background: 'rgba(124,58,237,0.4)',
+                border: '1px solid rgba(124,58,237,0.6)',
+                marginBottom: 'var(--space-3)',
+                marginTop: '12px',
+                position: 'relative', zIndex: 1,
+              }} />
+              <div style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text-primary)', marginBottom: '4px' }}>{step.label}</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary)', lineHeight: 1.5 }}>{step.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
         <div key={cap.title} className="n1-card n1-card-interactive">
           <div style={{
             width: 40, height: 40,
