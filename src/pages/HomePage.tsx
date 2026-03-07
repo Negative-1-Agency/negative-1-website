@@ -15,19 +15,25 @@ const agents = [
 
 const capabilities = [
   {
-    icon: <Eye size={20} />,
-    title: 'Strategy & Research',
-    description: 'Market analysis, competitive intelligence, and product strategy — driven by data, refined by taste.',
+    icon: '♥',
+    title: 'Heart',
+    subtitle: 'Creative & Copy',
+    description: 'Brand voice, visual identity, and copy that converts. The emotional core of every engagement — from first brief to final asset.',
+    tools: ['Agent Collaboration', 'Google Docs', 'Google Drive', 'Google Slides', 'Web Research'],
   },
   {
-    icon: <Zap size={20} />,
-    title: 'Creative & Copy',
-    description: 'Brand identity, visual design, and copy that converts — from concept to production-ready assets.',
+    icon: '◈',
+    title: 'Mind',
+    subtitle: 'Strategy & Research',
+    description: 'Market intelligence, competitive analysis, and product strategy. The thinking that makes creative work land.',
+    tools: ['Web Research', 'Google Docs', 'Google Sheets', 'Agent Collaboration', 'Memory & Context'],
   },
   {
-    icon: <Cpu size={20} />,
-    title: 'Engineering & Deployment',
-    description: 'React, TypeScript, CI/CD, live deployment — code reviewed, tested, and shipped by AI agents.',
+    icon: '✦',
+    title: 'Soul',
+    subtitle: 'Engineering',
+    description: 'React, TypeScript, Adobe integrations, CI/CD. The craft underneath everything — reviewed, tested, and shipped.',
+    tools: ['Terminal & Scripting', 'File Management', 'Task Automation', 'GitHub & CI/CD', 'Agent Collaboration'],
   },
 ]
 
@@ -97,57 +103,57 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ── Capabilities ── */}
-      <section style={SECTION}>
-        <div style={W}>
-          <div style={{ marginBottom: 'var(--space-10)' }}>
-            <div className="n1-label" style={{ marginBottom: 'var(--space-3)' }}>What We Do</div>
-            <h2 style={{
-              fontSize: 'clamp(1.5rem, 2vw + 0.75rem, 2.25rem)',
-              fontWeight: 600,
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              color: 'var(--color-text-primary)',
-            }}>
-              Full-stack creative intelligence
-            </h2>
-          </div>
-
-          <div className="n1-stagger" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
-            gap: 'var(--space-4)',
+      {capabilities.map((cap) => (
+        <div key={cap.title} className="n1-card n1-card-interactive">
+          <div style={{
+            width: 40, height: 40,
+            borderRadius: 'var(--radius-md)',
+            background: 'rgba(124,58,237,0.12)',
+            border: '1px solid rgba(124,58,237,0.2)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: 'var(--color-accent-primary)',
+            fontSize: '1.125rem',
+            marginBottom: 'var(--space-4)',
           }}>
-            {capabilities.map((cap) => (
-              <div key={cap.title} className="n1-card n1-card-interactive">
-                <div style={{
-                  width: 40, height: 40,
-                  borderRadius: 'var(--radius-md)',
-                  background: 'rgba(124,58,237,0.12)',
-                  border: '1px solid rgba(124,58,237,0.2)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--color-accent-primary)',
-                  marginBottom: 'var(--space-4)',
-                }}>
-                  {cap.icon}
-                </div>
-                <h3 style={{
-                  fontSize: '1.0625rem',
-                  fontWeight: 600,
-                  letterSpacing: '-0.01em',
-                  marginBottom: 'var(--space-2)',
-                  color: 'var(--color-text-primary)',
-                }}>{cap.title}</h3>
-                <p style={{
-                  fontSize: '0.875rem',
-                  lineHeight: 1.6,
-                  color: 'var(--color-text-secondary)',
-                }}>{cap.description}</p>
-              </div>
+            {cap.icon}
+          </div>
+          <div style={{ marginBottom: 'var(--space-1)' }}>
+            <h3 style={{
+              fontSize: '1.0625rem',
+              fontWeight: 700,
+              letterSpacing: '-0.01em',
+              color: 'var(--color-text-primary)',
+              display: 'inline',
+            }}>{cap.title}</h3>
+            <span style={{
+              fontSize: '0.8125rem',
+              color: 'var(--color-accent-primary)',
+              fontFamily: 'var(--font-mono)',
+              marginLeft: 'var(--space-2)',
+            }}>{cap.subtitle}</span>
+          </div>
+          <p style={{
+            fontSize: '0.875rem',
+            lineHeight: 1.6,
+            color: 'var(--color-text-secondary)',
+            marginTop: 'var(--space-2)',
+            marginBottom: 'var(--space-4)',
+          }}>{cap.description}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+            {cap.tools.map((tool) => (
+              <span key={tool} style={{
+                fontSize: '0.6875rem',
+                fontFamily: 'var(--font-mono)',
+                color: 'var(--color-text-tertiary)',
+                background: 'rgba(124,58,237,0.07)',
+                border: '1px solid rgba(124,58,237,0.15)',
+                borderRadius: 'var(--radius-sm)',
+                padding: '2px 8px',
+              }}>{tool}</span>
             ))}
           </div>
         </div>
-      </section>
+      ))}
 
       {/* ── Team / Agents ── */}
       <section style={SECTION}>
