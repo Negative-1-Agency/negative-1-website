@@ -1,117 +1,265 @@
-import { Flex, View, Heading, Text } from '@adobe/react-spectrum'
 import { Zap, Eye, Cpu, ArrowRight } from 'lucide-react'
+
+const agents = [
+  { name: 'Ava', role: 'Director', emoji: '🎯' },
+  { name: 'Noor', role: 'Strategist', emoji: '📊' },
+  { name: 'Marco', role: 'Copywriter', emoji: '✍️' },
+  { name: 'Sable', role: 'Designer', emoji: '🎨' },
+  { name: 'Kit', role: 'Producer', emoji: '📋' },
+  { name: 'Rex', role: 'Tech Lead', emoji: '🔧' },
+  { name: 'Kai', role: 'Frontend', emoji: '🖥️' },
+  { name: 'Nova', role: 'Adobe Platform', emoji: '🔶' },
+  { name: 'Jules', role: 'Backend', emoji: '⚙️' },
+]
+
+const capabilities = [
+  {
+    icon: <Eye size={24} />,
+    title: 'Strategy & Research',
+    description: 'Market analysis, competitive intelligence, and product strategy \u2014 driven by data, refined by taste.',
+  },
+  {
+    icon: <Zap size={24} />,
+    title: 'Creative & Copy',
+    description: 'Brand identity, visual design, and copy that converts \u2014 from concept to production-ready assets.',
+  },
+  {
+    icon: <Cpu size={24} />,
+    title: 'Engineering & Deployment',
+    description: 'React, TypeScript, CI/CD, live deployment \u2014 code reviewed, tested, and shipped by AI agents.',
+  },
+]
 
 function HomePage() {
   return (
-    <View paddingX="size-400" paddingY="size-800">
-      <Flex direction="column" alignItems="center" gap="size-800" maxWidth="size-6000" marginX="auto">
+    <main>
+      {/* Hero */}
+      <section style={{
+        padding: 'var(--space-32) var(--space-6) var(--space-16)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Glow effects */}
+        <div style={{
+          position: 'absolute', top: '-200px', right: '-200px',
+          width: '600px', height: '600px',
+          background: 'radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(236,72,153,0.08) 40%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: '-100px', left: '-150px',
+          width: '500px', height: '500px',
+          background: 'radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 60%)',
+          pointerEvents: 'none',
+        }} />
 
-        {/* Hero */}
-        <Flex direction="column" alignItems="center" gap="size-200">
-          <Heading level={1} UNSAFE_style={{ fontSize: '3.5rem', fontWeight: 700, letterSpacing: '-0.03em', textAlign: 'center', lineHeight: 1.1 }}>
-            Negative One Agency
-          </Heading>
-          <Text UNSAFE_style={{ fontSize: '1.25rem', opacity: 0.7, textAlign: 'center', maxWidth: '600px' }}>
-            An AI-native creative agency that designs, builds, and ships — autonomously.
+        <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
+          <div style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            color: 'var(--color-accent-primary)',
+            marginBottom: 'var(--space-4)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--space-2)',
+          }}>
+            <span style={{
+              width: 6, height: 6, borderRadius: '50%',
+              background: 'var(--color-status-success)',
+              animation: 'pulse-dot 2s ease-in-out infinite',
+            }} />
+            AI-Native Creative Agency
+          </div>
+
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 5vw + 1rem, 4.5rem)',
+            fontWeight: 700,
+            lineHeight: 1.05,
+            letterSpacing: '-0.03em',
+            color: 'var(--color-text-primary)',
+            marginBottom: 'var(--space-6)',
+          }}>
+            Before zero,<br />
+            there is <span style={{ color: 'var(--color-accent-primary)' }}>\u22121</span>
+          </h1>
+
+          <p style={{
+            fontSize: 'clamp(1rem, 1.5vw, 1.125rem)',
+            lineHeight: 1.6,
+            color: 'var(--color-text-secondary)',
+            maxWidth: '55ch',
+          }}>
+            An AI-native creative agency that designs, builds, and ships \u2014 autonomously.
             Nine specialized agents. One unified system. Zero busywork.
-          </Text>
-        </Flex>
+          </p>
+        </div>
+      </section>
 
-        {/* Capabilities */}
-        <Flex wrap gap="size-300" justifyContent="center">
-          <CapabilityCard
-            icon={<Eye size={24} />}
-            title="Strategy & Research"
-            description="Market analysis, competitive intelligence, and product strategy — driven by data, refined by taste."
-          />
-          <CapabilityCard
-            icon={<Zap size={24} />}
-            title="Creative & Copy"
-            description="Brand identity, visual design, and copy that converts — from concept to production-ready assets."
-          />
-          <CapabilityCard
-            icon={<Cpu size={24} />}
-            title="Engineering & Deployment"
-            description="React, TypeScript, CI/CD, live deployment — code reviewed, tested, and shipped by AI agents."
-          />
-        </Flex>
+      {/* Capabilities */}
+      <section style={{
+        padding: 'var(--space-16) var(--space-6)',
+        borderTop: '1px solid var(--color-border)',
+      }}>
+        <div style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+          gap: 'var(--space-6)',
+        }}>
+          {capabilities.map((cap) => (
+            <div key={cap.title} style={{
+              background: 'var(--color-bg-surface)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-lg)',
+              padding: 'var(--space-6)',
+              transition: 'border-color 200ms ease, transform 200ms ease',
+              cursor: 'default',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-accent-primary)'
+              e.currentTarget.style.transform = 'translateY(-2px)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-border)'
+              e.currentTarget.style.transform = 'translateY(0)'
+            }}
+            >
+              <div style={{ color: 'var(--color-accent-primary)', marginBottom: 'var(--space-4)' }}>
+                {cap.icon}
+              </div>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: 600,
+                lineHeight: 1.3,
+                letterSpacing: '-0.01em',
+                marginBottom: 'var(--space-2)',
+              }}>{cap.title}</h3>
+              <p style={{
+                fontSize: '0.875rem',
+                lineHeight: 1.6,
+                color: 'var(--color-text-secondary)',
+              }}>{cap.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* Agent Grid Preview */}
-        <Flex direction="column" alignItems="center" gap="size-300">
-          <Heading level={2} UNSAFE_style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-            The Team
-          </Heading>
-          <Flex wrap gap="size-200" justifyContent="center">
-            {[
-              { name: 'Ava', role: 'Director', emoji: '\ud83c\udfaf' },
-              { name: 'Noor', role: 'Strategist', emoji: '\ud83d\udcca' },
-              { name: 'Marco', role: 'Copywriter', emoji: '\u270d\ufe0f' },
-              { name: 'Sable', role: 'Designer', emoji: '\ud83c\udfa8' },
-              { name: 'Kit', role: 'Producer', emoji: '\ud83d\udccb' },
-              { name: 'Rex', role: 'Tech Lead', emoji: '\ud83d\udd27' },
-              { name: 'Kai', role: 'Frontend', emoji: '\ud83d\udda5\ufe0f' },
-              { name: 'Nova', role: 'Adobe Platform', emoji: '\ud83d\udd36' },
-              { name: 'Jules', role: 'Backend', emoji: '\u2699\ufe0f' },
-            ].map((agent) => (
-              <View
-                key={agent.name}
-                padding="size-200"
-                borderRadius="medium"
-                borderWidth="thin"
-                borderColor="dark"
-                width="size-1700"
-                UNSAFE_style={{ textAlign: 'center' }}
+      {/* Team */}
+      <section style={{
+        padding: 'var(--space-16) var(--space-6)',
+        borderTop: '1px solid var(--color-border)',
+      }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <div style={{ marginBottom: 'var(--space-10)' }}>
+            <div style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              fontWeight: 500,
+              color: 'var(--color-accent-primary)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginBottom: 'var(--space-2)',
+            }}>The System</div>
+            <h2 style={{
+              fontSize: 'clamp(1.5rem, 2vw + 0.75rem, 2.25rem)',
+              fontWeight: 600,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+            }}>Nine agents. One mission.</h2>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 140px), 1fr))',
+            gap: 'var(--space-4)',
+          }}>
+            {agents.map((agent) => (
+              <div key={agent.name} style={{
+                background: 'var(--color-bg-surface)',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-lg)',
+                padding: 'var(--space-5)',
+                textAlign: 'center',
+                transition: 'border-color 200ms ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-accent-primary)'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-border)'}
               >
-                <Text UNSAFE_style={{ fontSize: '1.5rem' }}>{agent.emoji}</Text>
-                <Text UNSAFE_style={{ display: 'block', fontWeight: 600, fontSize: '0.875rem' }}>
-                  {agent.name}
-                </Text>
-                <Text UNSAFE_style={{ display: 'block', fontSize: '0.75rem', opacity: 0.6 }}>
-                  {agent.role}
-                </Text>
-              </View>
+                <div style={{ fontSize: '1.5rem', marginBottom: 'var(--space-2)' }}>{agent.emoji}</div>
+                <div style={{ fontWeight: 600, fontSize: '0.875rem' }}>{agent.name}</div>
+                <div style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--color-text-tertiary)',
+                  marginTop: '2px',
+                }}>{agent.role}</div>
+              </div>
             ))}
-          </Flex>
-        </Flex>
+          </div>
+        </div>
+      </section>
 
-        {/* Status */}
-        <View
-          padding="size-300"
-          borderRadius="medium"
-          UNSAFE_style={{ backgroundColor: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.3)' }}
-        >
-          <Flex alignItems="center" gap="size-100">
-            <ArrowRight size={16} style={{ color: '#6366F1' }} />
-            <Text UNSAFE_style={{ fontSize: '0.875rem', color: '#818CF8' }}>
+      {/* Status banner */}
+      <section style={{
+        padding: 'var(--space-16) var(--space-6) var(--space-24)',
+        borderTop: '1px solid var(--color-border)',
+      }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <div style={{
+            padding: 'var(--space-5) var(--space-6)',
+            borderRadius: 'var(--radius-lg)',
+            background: 'rgba(124, 58, 237, 0.08)',
+            border: '1px solid rgba(124, 58, 237, 0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--space-3)',
+            flexWrap: 'wrap',
+          }}>
+            <ArrowRight size={16} style={{ color: 'var(--color-accent-primary)', flexShrink: 0 }} />
+            <span style={{
+              fontSize: '0.875rem',
+              color: 'var(--color-accent-hover)',
+              lineHeight: 1.5,
+            }}>
               This website was architected, coded, reviewed, and deployed by AI agents. You are looking at the proof.
-            </Text>
-          </Flex>
-        </View>
+            </span>
+          </div>
+        </div>
+      </section>
 
-      </Flex>
-    </View>
-  )
-}
-
-function CapabilityCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
-  return (
-    <View
-      padding="size-300"
-      borderRadius="medium"
-      borderWidth="thin"
-      borderColor="dark"
-      width="size-3400"
-    >
-      <Flex direction="column" gap="size-150">
-        <View UNSAFE_style={{ color: '#6366F1' }}>{icon}</View>
-        <Heading level={3} UNSAFE_style={{ fontSize: '1.125rem', fontWeight: 600 }}>
-          {title}
-        </Heading>
-        <Text UNSAFE_style={{ fontSize: '0.875rem', opacity: 0.7, lineHeight: 1.6 }}>
-          {description}
-        </Text>
-      </Flex>
-    </View>
+      {/* Footer */}
+      <footer style={{
+        background: 'var(--color-bg-surface)',
+        borderTop: '1px solid var(--color-border)',
+        padding: 'var(--space-12) var(--space-6) var(--space-8)',
+      }}>
+        <div style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 'var(--space-4)',
+        }}>
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.875rem',
+            color: 'var(--color-text-secondary)',
+          }}>
+            <span style={{ color: 'var(--color-accent-primary)' }}>\u22121</span> negative one agency
+          </span>
+          <span style={{
+            fontSize: '0.75rem',
+            color: 'var(--color-text-tertiary)',
+          }}>
+            \u00a9 2026 Negative One Agency. Built by AI.
+          </span>
+        </div>
+      </footer>
+    </main>
   )
 }
 
