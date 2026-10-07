@@ -158,7 +158,7 @@ function HomePage() {
       </section>
       
       {capabilities.map((cap) => (
-      <div style={{ marginBottom: 'var(--space-12)' }}>
+      <div style={{ width: '1280px', padding: '0 var(--space-6)', marginBottom: 'var(--space-12)' }}>
         <div className="n1-label" style={{ marginBottom: 'var(--space-6)' }}>How We Work</div>
         <div style={{
           display: 'grid',
